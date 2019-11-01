@@ -53,6 +53,24 @@
 			$pesanOk="Sound berhasil Mati";
 			mengajax($id,$url,$pesanOk);
 		  });
+		
+		//Open lock
+		  $("#lockopen").click(function(e) {
+			e.preventDefault();
+			$id=$("#info");
+			$url="https://api.telegram.org/bot918222277:AAHYp9YZDwvcyogF2HS7KqLAJ56f1cNL4_w/sendMessage?chat_id=-1001140143969&text=lock_open";
+			$pesanOk="Lock berhasil Open";
+			mengajax($id,$url,$pesanOk);
+		  });
+		  		  
+		//Close lock
+		  $("#lockclose").click(function(e) {
+			e.preventDefault();
+			$id=$("#info");
+			$url="https://api.telegram.org/bot918222277:AAHYp9YZDwvcyogF2HS7KqLAJ56f1cNL4_w/sendMessage?chat_id=-1001140143969&text=locking";
+			$pesanOk="Lock berhasil Terkunci";
+			mengajax($id,$url,$pesanOk);
+		  });
 		  		  
 	});
     </script>
@@ -72,6 +90,14 @@
 <br>
 <button id="mati">
    Matikan
+</button>
+<br>
+<button id="lockopen">
+   Buka Kunci
+</button>
+<br>
+<button id="lockclose">
+   Kunci Tutup
 </button>
 <br><br>
 <u id="info">..</u>
