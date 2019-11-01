@@ -15,35 +15,65 @@
         *
         *   You can even use $(function(){......}) to process document load ready event.
         * */
-        jQuery(document).ready(function(){
+        <!-- jQuery(document).ready(function(){ -->
 
-            // Show an alert popup message.
-            alert('Hello World From JQuery.');
+            <!-- // Show an alert popup message. -->
+            <!-- alert('Hello World From JQuery.'); -->
 
-            // Get the button object by it's id.
-            var button = jQuery('#click_button')
+            <!-- // Get the button object by it's id. -->
+            <!-- var button = jQuery('#click_button') -->
 
-            // When click this button then execute below function.
-            button.bind('click', function () {
+            <!-- // When click this button then execute below function. -->
+            <!-- button.bind('click', function () { -->
 
-                // Get button original text.
-                const original_text = jQuery(this).text();
+                <!-- // Get button original text. -->
+                <!-- const original_text = jQuery(this).text(); -->
 
-                // Alert the text.
-                alert('You click the button');
+                <!-- // Alert the text. -->
+                <!-- alert('You click the button'); -->
 
-                alert('The original button text is : ' + original_text);
+                <!-- alert('The original button text is : ' + original_text); -->
 
-                // Set the button new text. And change the button text and background color.
-                jQuery(this).text('Wish you like JQuery :)').css({color:'yellow', background:'blue'});
-            })
+                <!-- // Set the button new text. And change the button text and background color. -->
+                <!-- jQuery(this).text('Wish you like JQuery :)').css({color:'yellow', background:'blue'}); -->
+            <!-- }) -->
 
-        });
+        <!-- }); -->
+		
+		//tess saat di klik
+		$(document).ready(function() {
+		  $("#hidup").click(function(e) {
+			$("#info").html("wait....");
+			//$("#link1").text()
+			e.preventDefault();
+			$.ajax({
+			  type: "GET",
+			  url: "https://api.telegram.org/bot918222277:AAHYp9YZDwvcyogF2HS7KqLAJ56f1cNL4_w/sendMessage?chat_id=-1001140143969&text=sound_on",
+			  data: {
+			  },
+			  success: function(result) {
+				<!-- alert('ok'); -->
+				$("#info").html("berhasil");
+			  },
+			  error: function(result) {
+				alert('error');
+				$("#info").html("gagal");
+			  }
+			});
+		  });
+
+		});
     </script>
 </head>
 <body>
 <button id="click_button">
     Welcome to JQuery world.
 </button>
+<br>
+<button id="hidup">
+   Hidupkan
+</button>
+<br><br>
+<u id="info">sdfsd</u>
 </body>
 </html>
