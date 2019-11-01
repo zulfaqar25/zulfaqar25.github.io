@@ -3,77 +3,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JQuery Hello World Example</title>
+    <title>Bagus Rasuli</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-        /*  jQuery function is the entrance function that jQuery execute.
-        *
-        *   Below code means when the html document load ready, this is similar to window.onload() = function(){......};
-        *
-        *   You can also use $(document).ready(function(){......}), $ is an alias of jQuery.
-        *
-        *   You can even use $(function(){......}) to process document load ready event.
-        * */
-        <!-- jQuery(document).ready(function(){ -->
 
-            <!-- // Show an alert popup message. -->
-            <!-- alert('Hello World From JQuery.'); -->
-
-            <!-- // Get the button object by it's id. -->
-            <!-- var button = jQuery('#click_button') -->
-
-            <!-- // When click this button then execute below function. -->
-            <!-- button.bind('click', function () { -->
-
-                <!-- // Get button original text. -->
-                <!-- const original_text = jQuery(this).text(); -->
-
-                <!-- // Alert the text. -->
-                <!-- alert('You click the button'); -->
-
-                <!-- alert('The original button text is : ' + original_text); -->
-
-                <!-- // Set the button new text. And change the button text and background color. -->
-                <!-- jQuery(this).text('Wish you like JQuery :)').css({color:'yellow', background:'blue'}); -->
-            <!-- }) -->
-
-        <!-- }); -->
-		
-		//tess saat di klik
-		$(document).ready(function() {
-		  $("#hidup").click(function(e) {
-			$("#info").html("wait....");
+	$(document).ready(function() {		
+		  function mengajax($id,$url,$pesanOk){
+			$id.html("wait....");
 			//$("#link1").text()
-			e.preventDefault();
 			$.ajax({
 			  type: "GET",
-			  url: "https://api.telegram.org/bot918222277:AAHYp9YZDwvcyogF2HS7KqLAJ56f1cNL4_w/sendMessage?chat_id=-1001140143969&text=sound_on",
+			  url:$url,
 			  data: {
 			  },
 			  success: function(result) {
 				<!-- alert('ok'); -->
-				$("#info").html("berhasil");
+				$id.html($pesanOk);
 			  },
 			  error: function(result) {
 				alert('error');
-				$("#info").html("gagal");
+				$id.html("Failed..");
 			  }
 			});
+		  }
+		  
+		//tess saat di klik
+		  $("#tez").click(function(e) {
+			e.preventDefault();
+			$id=$("#info");
+			$url="https://api.telegram.org/bot918222277:AAHYp9YZDwvcyogF2HS7KqLAJ56f1cNL4_w/sendMessage?chat_id=-1001159497113&text=[tes]";
+			$pesanOk="Tes berhasil Send";
+			mengajax($id,$url,$pesanOk);
 		  });
-
-		});
+		
+		//Hidup lampu
+		  $("#hidup").click(function(e) {
+			e.preventDefault();
+			$id=$("#info");
+			$url="https://api.telegram.org/bot918222277:AAHYp9YZDwvcyogF2HS7KqLAJ56f1cNL4_w/sendMessage?chat_id=-1001140143969&text=sound_on";
+			$pesanOk="Sound berhasil Hidup";
+			mengajax($id,$url,$pesanOk);
+		  });
+		//Mati lampu
+		  $("#mati").click(function(e) {
+			e.preventDefault();
+			$id=$("#info");
+			$url="https://api.telegram.org/bot918222277:AAHYp9YZDwvcyogF2HS7KqLAJ56f1cNL4_w/sendMessage?chat_id=-1001140143969&text=sound_off";
+			$pesanOk="Sound berhasil Mati";
+			mengajax($id,$url,$pesanOk);
+		  });
+		  		  
+	});
     </script>
 </head>
 <body>
-<button id="click_button">
-    Welcome to JQuery world.
+<!-- <button id="click_button"> -->
+    <!-- Welcome to JQuery world. -->
+<!-- </button> -->
+<!-- <br> -->
+<button id="tez">
+    [tes]
 </button>
 <br>
 <button id="hidup">
    Hidupkan
 </button>
+<br>
+<button id="mati">
+   Matikan
+</button>
 <br><br>
-<u id="info">sdfsd</u>
+<u id="info">..</u>
 </body>
 </html>
